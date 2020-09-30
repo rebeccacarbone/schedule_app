@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TabPane layoutY="-2.0" prefHeight="410.0" prefWidth="610.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Employee Search">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ButtonBar layoutX="10.0" layoutY="333.0" prefHeight="46.0" prefWidth="590.0">
+                          <buttons>
+                            <Button mnemonicParsing="false" text="View" />
+                              <Button mnemonicParsing="false" text="Edit" />
+                              <Button mnemonicParsing="false" text="Delete" />
+                          </buttons>
+                        </ButtonBar>
+                        <Label layoutX="25.0" layoutY="24.0" prefHeight="47.0" prefWidth="162.0" text="Employee Name:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="employeeName" layoutX="153.0" layoutY="32.0" prefHeight="30.0" prefWidth="214.0" />
+                        <ListView fx:id="employeeView" layoutX="27.0" layoutY="92.0" prefHeight="232.0" prefWidth="556.0" />
+                        <Label layoutX="538.0" layoutY="71.0" text="Result(s)" />
+                        <Button fx:id="search" layoutX="378.0" layoutY="35.0" mnemonicParsing="false" onAction="search()" text="Search" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab disable="true" text="View">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Availability Search">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Read File">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+          <Tab text="Add Employee">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
