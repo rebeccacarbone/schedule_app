@@ -11,7 +11,9 @@ public class Availability {
     private String time;
 
     /**
-     * Method for creating a new availability object
+     * Checks that the row and column numbers correspond to valid day and time
+     * entries as expecte from the Excel sheet. If either is invalid, return false 
+     * to signal that it is not a valid availability and should not be used.
      * @param row
      * @param col
      * @return 
@@ -66,7 +68,10 @@ public class Availability {
      */
     private boolean setTime(int row) {
         boolean isTime = false;
-        if (row >= 7 && row <= 18) { //check that the row number corresponds to a time (Valencia Campus)
+        /* rows 7-18 correspond to the Valencia Campus on the excel sheet
+        with each row representing a different time block
+        */
+        if (row >= 7 && row <= 18) { 
             switch (row) {
                 case 7:
                     time = "7:45-9:00";
@@ -116,7 +121,8 @@ public class Availability {
                     time = "7:00-8:00";
                     isTime = true;
             }
-        } else if (row >= 23 && row <= 32) { //if the above is not true, check the same for Canyon Country campus
+        } else if (row >= 23 && row <= 32) { 
+            //if the above is not true, check the same for CC campus (rows 23-32)
             switch (row) {
                 case 23:
                     time = "9:00-10:00";
@@ -165,12 +171,14 @@ public class Availability {
     }
 
     /**
-     * Returns false if the day and/or time are null
+     * Returns false if the day and/or time are null as this signals
+     * that createNewAvail() was a) not called or b) not successful
      * @return 
      */
     public boolean isValid() {
         boolean valid = true;
-        if (day == null || time == null) { //assume the availability is valid but if not, change to false
+        //assume the availability is valid but if not, change to false
+        if (day == null || time == null) { 
             valid = false;
         }
         return valid;

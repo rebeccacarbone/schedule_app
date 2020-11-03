@@ -1,21 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Description: Class for creating a DayList objet which contains all the
+ * Availability an Employee has for a given day
  */
 package schedule;
-
 import java.util.ArrayList;
 
-/**
- * Class for creating a DayList object which contains all the availability
- * an employee has for a given day
- * @author rebec
- */
 public class DayList {
 
     private String day;
-    //arraylist of strings made up of the employee's available times for the given day
+    //ArrayList of strings made up of the employee's available times for the given day
     private ArrayList<String> times = new ArrayList<>();
 
     /**
@@ -27,15 +20,26 @@ public class DayList {
     }
 
     /**
-     * Method for setting the day variable
+     * Method for setting the day variable and verifying the input
+     * is a proper day
      * @param newDay 
      */
-    public final void setDay(String newDay) {
-        day = newDay;
+    public void setDay(String newDay) {
+        //convert newDay to lower case to ensure mixed case does not
+        //mess up the results
+        String check = newDay.toLowerCase();
+        if(check.equals("monday") || check.equals("tuesday") || 
+           check.equals("wednesday") || check.equals("thursday") ||
+           check.equals("friday") || check.equals("saturday")) {
+            day = newDay;
+        }
+        else {
+            System.out.println("Not a valid input");
+        }
     }
 
     /**
-     * Method to add a time to the times arraylist
+     * Method to add a time to the times ArrayList
      * @param newAvail 
      */
     public void addTime(Availability newAvail) {

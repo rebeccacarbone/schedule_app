@@ -25,7 +25,7 @@ import org.apache.poi.ss.usermodel.Row.MissingCellPolicy;
 public class ReadFile {
 
     static EmployeeList employees = new EmployeeList();
-    //create the Employee for the Excel file to be read
+    //create an Employee object in preparation of reading the excel file
     static Employee employee = new Employee();
     //create HSSFRow for reading excel file
     static HSSFRow row;
@@ -78,18 +78,20 @@ public class ReadFile {
     }
 
     /**
-     * Method checks if the cell contains a name, if so it creates a new
-     * employee object with given name
+     * Check if the cell data matches formatting of the name cell
+     * in the Excel sheet. If so, initialize the employee object w/
+     * the given name and return true. Otherwise return false.
      * @param temp
      * @return 
      */
     public static boolean checkName(String temp) {
         boolean name = false;
         //ensure length > 4 so it doesn't throw an error
-        //then check if the cell starts with "Name"
+        //then check if the cell starts with "Name" as this corresponds
+        //to the excel sheet name entry
         if (temp.length() > 4 && temp.substring(0, 4).equals("Name")) {
             name = true;
-            //set employee name after cutting off "Name: " part of cell
+            //set employee name after cutting off "Name: " 
             employee.setName(temp.substring(6));
         }
         
@@ -97,8 +99,11 @@ public class ReadFile {
     }
 
     /**
-     * Method checks if the cell contains a time, if so it adds the time
-     * to the employee object
+     * Checks that the row # corresponds to known availability rows in the excel
+     * sheet (rows 7-18 or 23-32). If so, check whether the cell contains an "A"
+     * for Available and attempt to add the availability to the employee object.
+     * Return true if a new availability time was successfully added. Otherwise,
+     * return false.
      * @param cell
      * @param row
      * @param col

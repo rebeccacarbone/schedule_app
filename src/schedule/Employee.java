@@ -1,18 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Description: Employee class for creating Employee objects which contain the name
+ * and Availability lists for each campus. 
+ * @author rebec
  */
 package schedule;
 
 import java.util.ArrayList;
 
-
-/**
- * Employee class for creating Employee objects which contain the name,
- * Valencia availability, CC availability
- * @author rebec
- */
 public class Employee {
    private String name;
    private VCList vcList = new VCList();
@@ -43,17 +37,23 @@ public class Employee {
     * @return 
     */
    public boolean addAvail(int row, int col) {
-       boolean add = false; //add tracks if the availability was successfully added
+       boolean add = false; //tracks if the availability was successfully added
        Availability newAvail = new Availability();
-       newAvail.createNewAvail(row, col);
+       /*createNewAvail(row,col) determines whether the given row and column
+       values match expected input from the excel availability sheet. if not
+       a new availability will not be created
+       */
+       newAvail.createNewAvail(row, col); 
        
-       /*if row # is between 7-18 and the availability is valid attempt to 
-        add to the Valencia list*/
+       /*row # between 7-18 corresponds to Valencia Campus on the excel sheet
+       if createNewAvail() was successful (in which case isValid() returns true)
+       then the input is valid and a new time can be added to the VCList*/
        if(newAvail.isValid() && (row >= 7 && row <= 18)){
            vcList.addTime(newAvail);
            add = true;
        }
-       //otherwise if row # is between 23-32 attempt to add to CC list
+       /*otherwise, rows 23-32 correspond to Canyon Country and the same steps
+       shall be taken to attempt to add a time to the CCList*/
        else if (newAvail.isValid() && (row >= 23 && row <= 32)) {
            ccList.addTime(newAvail);
            add = true;

@@ -1,15 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Description: Class for tracking an Employee's availability for the 
+ * Valencia Campus. Each day of the week has a correspdoning DayList containing
+ * their availability.
  */
 package schedule;
 
-
-/**
- * Class for creating an Employee's availability for the Valencia campus
- * @author rebec
- */
 public class VCList {
 
     private final String LOCATION = "Valencia Campus";
@@ -22,15 +17,15 @@ public class VCList {
     private DayList saturday = new DayList("Saturday");
 
     /**
-     * Method adds the given time to the proper DayList
+     * Determines the corresponding day for the given Availability object
+     * and adds the time to the correct day
      * @param newAvail 
      */
     public void addTime(Availability newAvail) {
         String day = newAvail.getDay();
 
-        /*compare the day of the given availbility to each day the campus is open
-        and add to proper list*/
-        
+       /*compare the day attached to the given Availability until a match is found
+        then add the availability to the corresponding list*/
         switch (day) {
             case "Monday":
                 monday.addTime(newAvail);

@@ -1,16 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Description: Class for tracking an Employee's availability for the 
+ * CC Campus. Each day of the week has a correspdoning DayList containing
+ * their availability.
  */
 package schedule;
 
-
-/**
- * Class representing the list of availability a given Employee has for the
- * Canyon Country campus
- * @author rebec
- */
 public class CCList {
     private final String LOCATION = "Canyon Country Campus";
     //initialize individual lists of availability for each day the campus is open 
@@ -26,7 +20,7 @@ public class CCList {
     public void addTime(Availability newAvail) {
         String day = newAvail.getDay();
 
-        /*compare the day attached to the given availability until a match is found
+        /*compare the day attached to the given Availability until a match is found
         then add the availability to the corresponding list*/
         switch (day) {
             case "Monday":

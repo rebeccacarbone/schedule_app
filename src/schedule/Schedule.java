@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Main class for running the program. Currently WIP - adding functionality
+ * and a UI with JavaFX
  */
 package schedule;
 
@@ -25,18 +24,16 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.apache.log4j.chainsaw.Main;
 
-/**
- * Work in progress for running the program
- * @author rebec
- */
 public class Schedule extends Application {
 
 
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException, IOException {
+        /*load up current FXML.fxml file with rough draft of what the initial screen
+        should display*/
        Parent root = FXMLLoader.load(getClass().getResource("FXML.fxml"));
     
-        Scene scene = new Scene(root, 300, 275);
+        Scene scene = new Scene(root);
     
         primaryStage.setTitle("FXML Welcome");
         primaryStage.setScene(scene);
